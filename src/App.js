@@ -38,10 +38,10 @@ function App() {
        <div>
        <a href="fav2/icon192.png">1</a><br></br>
        <a href="/fav2/icon192.png">2</a><br></br>
-        <button onClick={()=>changeDynamicManifest('ei', 'fav1')}>Change1</button>
-        <button onClick={()=>changeDynamicManifest('ei', 'fav2')}>Change2</button>
-        <button onClick={()=>changeDynamicManifest('ei', 'fav3')}>Change3</button>
-        <button onClick={()=>changeDynamicManifest('ei', 'fav4')}>Change4</button>
+        <button onClick={()=>changeDynamicManifest('ei1', 'fav1')}>Change1</button>
+        <button onClick={()=>changeDynamicManifest('ei2', 'fav2')}>Change2</button>
+        <button onClick={()=>changeDynamicManifest('ei3', 'fav3')}>Change3</button>
+        <button onClick={()=>changeDynamicManifest('ei4', 'fav4')}>Change4</button>
 
         {/*
           A <Switch> looks through all its children <Route>
