@@ -12,15 +12,34 @@ import Start from './components/Start'
 import Join from './components/Join'
 import Share from './components/Share'
 import Dashboard from './components/Dashboard'
+import firebase from 'firebase'
+
+import {changeDynamicManifest} from './Utils'
+
+const firebaseConfig  = {
+  apiKey: "AIzaSyC1PHvcpBIoie4ZiNhGMI_YTf8EQIl0JTY",
+  authDomain: "comunit-app.firebaseapp.com",
+  databaseURL: "https://comunit-app.firebaseio.com",
+  projectId: "comunit-app",
+  storageBucket: "comunit-app.appspot.com",
+  messagingSenderId: "118962740484",
+  appId: "1:118962740484:web:9b83050c29f521be03c451"
+}
+firebase.initializeApp(firebaseConfig )
+
+
 function App() {
   const cookies= cookie.parse(document.cookie)
   const auth = cookies ? cookies.comuniappAuth: null
-  const checkAuth = auth?true:false
+  const checkAuth = auth?false:false
   console.log(checkAuth, auth)
   return (
     <Router>
        <div>
-        
+        <button onClick={()=>changeDynamicManifest('ei', 'fav1')}>Change1</button>
+        <button onClick={()=>changeDynamicManifest('ei', 'fav2')}>Change2</button>
+        <button onClick={()=>changeDynamicManifest('ei', 'fav3')}>Change3</button>
+        <button onClick={()=>changeDynamicManifest('ei', 'fav4')}>Change4</button>
 
         {/*
           A <Switch> looks through all its children <Route>
@@ -45,6 +64,9 @@ function App() {
           </Route>
           <Route path="/start">
             <Start></Start>
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard></Dashboard>
           </Route>
         </Switch>
       </div>
