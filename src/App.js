@@ -36,8 +36,6 @@ function App() {
   return (
     <Router>
        <div>
-       <a href="fav2/icon192.png">1</a><br></br>
-       <a href="/fav2/icon192.png">2</a><br></br>
         <button onClick={()=>changeDynamicManifest('ei1', 'fav1')}>Change1</button>
         <button onClick={()=>changeDynamicManifest('ei2', 'fav2')}>Change2</button>
         <button onClick={()=>changeDynamicManifest('ei3', 'fav3')}>Change3</button>
