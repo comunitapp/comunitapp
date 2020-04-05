@@ -22,9 +22,8 @@ function App() {
   const checkAuth = auth?false:false
   const [favicon, changeFavicon] = useState('fav1')
   const handleChangeFavicon = (fav)=>{
-    changeFavicon(fav,()=>{
-      changeDynamicManifest('name_'+fav, fav, '/#/share/'+fav)
-    })
+    changeFavicon(fav)
+    changeDynamicManifest('name_'+fav, fav, '/#/share/'+fav)
     
   }
   useEffect(() => {
