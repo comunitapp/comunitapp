@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {
@@ -20,23 +20,24 @@ function App() {
   const cookies= cookie.parse(document.cookie)
   const auth = cookies ? cookies.comuniappAuth: null
   const checkAuth = auth?false:false
-  console.log(checkAuth, auth)
+  const [favicon, changeFavicon] = useState('fav1')
+  const handleChangeFavicon = (fav)=>{
+    changeFavicon(fav,()=>{
+      changeDynamicManifest('name_'+fav, fav, '/#/share/'+fav)
+    })
+    
+  }
+  useEffect(() => {
+    // document.title = ${}
+  }, []);
   return (
     <Router>
        <div>
-        <Favicon url={["fav4/icon192.png", "fav2/icon192.png", "fav3/icon192.png"]}/>
-        <button onClick={()=>changeDynamicManifest('ei1', 'fav1', '/#/share/op')}>Change1</button>
-        <button onClick={()=>changeDynamicManifest('ei2', 'fav2', '/#/share/op2')}>Change2</button>
-        <button onClick={()=>changeDynamicManifest('ei3', 'fav3', '/#/share/op3')}>Change3</button>
-        <button onClick={()=>changeDynamicManifest('ei4', 'fav4', '/#/share/op4')}>Change4</button>
-
-        {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
+        <Favicon url={`${favicon}/icon192.png`}/>
+        <button onClick={()=>handleChangeFavicon('fav1')}>Change1</button>
+        <button onClick={()=>handleChangeFavicon('fav2')}>Change2</button>
+        <button onClick={()=>handleChangeFavicon('fav3')}>Change3</button>
+        <button onClick={()=>handleChangeFavicon('fav4')}>Change4</button>
         <Switch>
           <Route exact path="/">
             {!checkAuth? (

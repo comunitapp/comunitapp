@@ -4,7 +4,7 @@ export const changeDynamicManifest = (name, fav, path)=>{
     var myDynamicManifest = {
       "name": "Comunit.app "+name,
       "short_name": name,
-      "start_url": ".",
+      "start_url": path,
       "display": "standalone",
       "theme_color": "#000000",
       "background_color": "#ffffff",
