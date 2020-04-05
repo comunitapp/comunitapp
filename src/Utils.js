@@ -4,11 +4,10 @@ export const changeDynamicManifest = (name, fav, path)=>{
     var myDynamicManifest = {
       "name": "Comunit.app "+name,
       "short_name": name,
-      "start_url": path,
+      "start_url": 'https://www.comunit.app/'+path,
       "display": "standalone",
       "theme_color": "#000000",
       "background_color": "#ffffff",
-      "scope": path,
       "icons": [{
         "src": fav+"/favicon.ico",
         "sizes": "64x64 32x32 24x24 16x16",
