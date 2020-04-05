@@ -16,7 +16,7 @@ const saveToFirebase = (userData, communityData)=>{
 }
 
 function Start() {
-  document.cookie=cookie.serialize('comuniappAuth', 'hey')
+  // document.cookie=cookie.serialize('comuniappAuth', 'hey')
   const [ref, { x, y, width }] = useDimensions();
   const [userData, changeUserData] = useState({
     name: null,

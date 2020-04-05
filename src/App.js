@@ -18,13 +18,15 @@ import {changeDynamicManifest} from './Utils'
 
 function App() {
   const cookies= cookie.parse(document.cookie)
-  const auth = cookies ? cookies.comuniappAuth: null
-  const checkAuth = auth?false:false
+  const [auth, changeAuth] = useState( cookies.comuniappAuth)
+  // const auth = cookies ? cookies.comuniappAuth: null
+  const checkAuth = auth?true:false
   const [favicon, changeFavicon] = useState('fav1')
   const handleChangeFavicon = (fav)=>{
     changeFavicon(fav)
     changeDynamicManifest('name_'+fav, fav, '/#/share/'+fav)
-    
+    document.cookie=cookie.serialize('comuniappAuth', fav)
+    changeAuth(fav)
   }
   useEffect(() => {
     // document.title = ${}
@@ -33,6 +35,7 @@ function App() {
     <Router>
        <div>
         <Favicon url={`${favicon}/icon192.png`}/>
+  <div>{auth}</div><br></br>
         <button onClick={()=>handleChangeFavicon('fav1')}>Change1</button>
         <button onClick={()=>handleChangeFavicon('fav2')}>Change2</button>
         <button onClick={()=>handleChangeFavicon('fav3')}>Change3</button>
@@ -40,7 +43,8 @@ function App() {
         <Switch>
           <Route exact path="/">
             {!checkAuth? (
-              <Redirect to='/start'/>
+              // <Redirect to='/start'/>
+              <div>init</div>
             ):(
               <Dashboard auth={auth}></Dashboard>
             )}

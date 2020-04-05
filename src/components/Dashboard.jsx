@@ -19,7 +19,7 @@ const panes = [
 ]
 function Dashboard(props) {
   
-  return (<><div>hey</div> <Tab panes={panes} /></>)
+return (<><div>auth: {props.auth}</div> <Tab panes={panes} /></>)
 }
 
 export default Dashboard;
