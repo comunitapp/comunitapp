@@ -13,20 +13,8 @@ import Join from './components/Join'
 import Share from './components/Share'
 import Dashboard from './components/Dashboard'
 import firebase from 'firebase'
-
+import Favicon from 'react-favicon'
 import {changeDynamicManifest} from './Utils'
-
-const firebaseConfig  = {
-  apiKey: "AIzaSyC1PHvcpBIoie4ZiNhGMI_YTf8EQIl0JTY",
-  authDomain: "comunit-app.firebaseapp.com",
-  databaseURL: "https://comunit-app.firebaseio.com",
-  projectId: "comunit-app",
-  storageBucket: "comunit-app.appspot.com",
-  messagingSenderId: "118962740484",
-  appId: "1:118962740484:web:9b83050c29f521be03c451"
-}
-firebase.initializeApp(firebaseConfig )
-
 
 function App() {
   const cookies= cookie.parse(document.cookie)
@@ -36,10 +24,11 @@ function App() {
   return (
     <Router>
        <div>
-        <button onClick={()=>changeDynamicManifest('ei1', 'fav1')}>Change1</button>
-        <button onClick={()=>changeDynamicManifest('ei2', 'fav2')}>Change2</button>
-        <button onClick={()=>changeDynamicManifest('ei3', 'fav3')}>Change3</button>
-        <button onClick={()=>changeDynamicManifest('ei4', 'fav4')}>Change4</button>
+        <Favicon url={["fav4/icon192.png", "fav2/icon192.png", "fav3/icon192.png"]}/>
+        <button onClick={()=>changeDynamicManifest('ei1', 'fav1', '/#/share/op')}>Change1</button>
+        <button onClick={()=>changeDynamicManifest('ei2', 'fav2', '/#/share/op2')}>Change2</button>
+        <button onClick={()=>changeDynamicManifest('ei3', 'fav3', '/#/share/op3')}>Change3</button>
+        <button onClick={()=>changeDynamicManifest('ei4', 'fav4', '/#/share/op4')}>Change4</button>
 
         {/*
           A <Switch> looks through all its children <Route>

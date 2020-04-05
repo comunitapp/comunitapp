@@ -5,9 +5,14 @@ import UserForm from './start/UserForm'
 import CommunityForm from './start/CommunityForm'
 import useDimensions from "react-use-dimensions";
 import firebase from 'firebase'
+import {initFirebase} from '../Utils.js'
+initFirebase()
+let db = firebase.firestore();
 const saveToFirebase = (userData, communityData)=>{
-  console.log(userData, communityData)
-  console.log(firebase)
+  let refNewUser = db.collection("users").doc()
+  let refNewCommunity = db.collection("communities").doc()
+  return Promise.all([refNewUser.set({...userData,communityRef:refNewCommunity}),refNewCommunity.set({...communityData, creator:refNewUser, users:[refNewUser]})])
+  
 }
 
 function Start() {
